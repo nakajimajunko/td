@@ -2,6 +2,12 @@
 
 このWorkflowは、ダッシュボード用の基礎データを集計するWorkflowのサンプルです。WeblogカラムにログインIDカラムがある場合は、ログインユーザーのPV/UUも集計可能です。
 
+以下のデータが取得できます。
+- UU
+ - per day, per week, pwe month
+- PV
+ - per day, per week, pwe month
+
 # 準備
 
 ## TDへのdig/queryファイルアップロード
@@ -14,7 +20,7 @@ $ td wf push dashboard_wf
 
 ## 結果出力DBの作成
 
-このサンプルでは`bi_report`というDBにデータを出力しています。
+このサンプルでは`bi_report`というDBにデータを出力していますので、WFを回す前に `bi_report` DBを作成しておいてください。
 
 ## 地図表示用対照表のアップロード
 
@@ -30,7 +36,7 @@ TDのUDFでIPアドレスを分解すると、都道府県パースが可能で�
 ```
 _export:
   td:
-    database: bi_report
+  database: bi_report
   log_database: sample #ウェブログが蓄積されるDB名
   log_table: sample #ウェブログが蓄積されるテーブル名
   user_id: user_id #ユーザーIDがある場合カラム名を指定
